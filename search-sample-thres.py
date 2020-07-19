@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
@@ -8,8 +9,9 @@ image = mpimg.imread(filename)
 # uint8, 160,320,3 0-255 8bit coloring
 #plt.imshow(image)
 #plt.show()
+#image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 def color_thresh(img, rgb_thresh=(0,0,0)):
-    color_sel = np.zeros_like(img[:,:,0])
+    color_sel = np.zeros_like(image[:,:,0])
     above_thresh = (img[:,:,0] > rgb_thresh[0])& (img[:,:,1] > rgb_thresh[1])& (img[:,:,2] > rgb_thresh[2])
     #if(img[:,:,0]>rgb_thresh[0] & img[:,:,1]>rgb_thresh[1] & img[:,:,2]>rgb_thresh[2]):
     color_sel[above_thresh]=1
