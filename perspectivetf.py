@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt 
 import matplotlib.image as mpimg
 import numpy as np
+import cv2
 
 
 image = mpimg.imread('example_grid1.jpg')
@@ -14,8 +15,12 @@ bottom_offset =6
 u= image.shape[1]/2
 v= image.shape[0]/2
 
-source= np.float32([[14,140], [118,96], [200,96] [300,140]])
-dest = np.float32([[u-dst_size, v -bottom_offset], [u+dst_size, v- 2*dst_size- -bottom_offset], [u-dst_size, v- 2*dst_size- -bottom_offset], [u+dst_size, v-bottom_offset]])
+source= np.float32([[14, 140], [301 ,140],[200, 96], [118, 96]])
+dest =np.float32([[image.shape[1]/2 - dst_size, image.shape[0] - bottom_offset],
+                  [image.shape[1]/2 + dst_size, image.shape[0] - bottom_offset],
+                  [image.shape[1]/2 + dst_size, image.shape[0] - 2*dst_size - bottom_offset], 
+                  [image.shape[1]/2 - dst_size, image.shape[0] - 2*dst_size - bottom_offset],
+                  ])
 
 def perspectiveTF(image, src, dst):
     M = cv2.getPerspectiveTransform(src,dst)    
