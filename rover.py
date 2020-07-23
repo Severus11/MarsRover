@@ -26,7 +26,6 @@ app = Flask(__name__)
 ground_truth = mpimg.imread('D:\Docs\projects\python\MarsRover\perception\map_bw.png')
 ground_truth_3d = np.dstack((ground_truth*0, ground_truth*255, ground_truth*0)).astype(np.float)
 
-s
 class RoverState():
     def __init__(self):
         self.start_time = None 
